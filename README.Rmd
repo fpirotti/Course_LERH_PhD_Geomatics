@@ -7,6 +7,8 @@ output: html_document
  
 See also the online material [HERE](https://www.cirgeo.unipd.it/archivio/shared/R/Course_LERH_PhD_Geomatics/)
 
-Check script ["PhDscriptRgee.R"](PhDscriptRgee.R)
+Check script [PhDscriptRgee.R](PhDscriptRgee.R)
+
+GEE script are  shared [HERE](https://code.earthengine.google.com/?accept_repo=users/cirgeo/phdCourse)
 
  
