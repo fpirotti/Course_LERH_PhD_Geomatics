@@ -6,3 +6,7 @@ output: html_document
 ## LERH Course
  
 See also the online material [HERE](https://www.cirgeo.unipd.it/archivio/shared/R/Course_LERH_PhD_Geomatics/)
+
+Check script ["PhDscriptRgee.R"](PhDscriptRgee.R)
+
+ 
