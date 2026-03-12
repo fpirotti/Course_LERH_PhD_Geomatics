@@ -5,6 +5,9 @@ ee_Initialize()
 canopy_height = ee$Image("users/nlang/ETH_GlobalCanopyHeight_2020_10m_v1");
 print( canopy_height$getInfo() )
 
+ studyAreas = ee$FeatureCollection("users/cirgeo/agritech/comuni")
+ padova = studyAreas$filter( ee$Filter$eq("COMUNE", "Padova")  )
+
 ## adding landsat 9 temperature band reduced to max value
 ls9 = ee$ImageCollection("LANDSAT/LC09/C02/T1_L2")
 ls9f <- ls9$
@@ -17,10 +20,6 @@ ls9f <- ls9$
   add(149)$
   subtract(273.15)
 
-## study area from Prof. Pirotti (polygons of 4 cities)
-studyArea = ee$FeatureCollection("projects/spatial-logic-417507/assets/studyAreas")
-## select only padova
-padova = studyArea$filter( ee$Filter$eq("COMUNE", "Padova") );
 
 ## clip canopy heights
 canopy_height_clipped = canopy_height$clip(padova)
