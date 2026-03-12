@@ -32,106 +32,84 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduzione ad R {.Section1 .titlepage}
+## What we will learn
 
-## Cosa impareremo
+- structure of R (base and packages), capabilities
+- RStudio: how it works (overview)
+- documentation, examples, snippets for learning
+- main categories of data: objects, variables and functions in R
+- variable assignment and use
+- reading, processing and writing structured data (tables) and unstructured data
+- reading and interpreting *geospatial* data
+- representing data with charts and maps
 
--   struttura di R (base e pacchetti), potenzialità
--   RStudio: come funziona (panoramica)
--   documentazione, esempi, snippets per imparare
--   principali categorie di dati: oggetti, variabili e funzioni in R
--   assegnazione ed utilizzo variabili
--   leggere, rielaborare e scrivere dati strutturati (tabelle) e non
--   leggere ed interpretare dati *geo-spaziali*
--   rappresentare dati con grafici e mappe
+## R: overview
 
-## Materiale
+- Is R only for statistical analysis? No!
+  - E.g. this material is created with R (see *rmarkdown*)
+  - Analyses can become interactive with *Shiny* (e.g. InforSAT, VARCITIES projects...)
+  - ...
 
-Trovate il materiale in una pagina GitHub
-[QUI](https://github.com/fpirotti/ARPA2024_corsoBase/)e potrete
-scaricarlo anche come zip ed anche direttamente nello spazio web
-[QUI](https://www.cirgeo.unipd.it/archivio/shared/R/ARPA2024_corsoBase/).
-Troviamo:
+## R: overview
 
--   [slides in formato
-    HTML](https://www.cirgeo.unipd.it/archivio/shared/R/ARPA2024_corsoBase/modulo1.html)
-
--   [contenuto slides in formato di documento A4
-    PDF](https://www.cirgeo.unipd.it/archivio/shared/R/ARPA2024_corsoBase/modulo1.pdf)
-
--   [materiale per gli
-    esercizi](https://www.cirgeo.unipd.it/archivio/shared/R/ARPA2024_corsoBase/dati)
-
-Verrà fornito un link GDrive per caricare gli esercizi per le verifiche.
-
-## R: panoramica
-
--   Ma R serve solo per analisi statistiche? No!
-    -   E.g. questo materiale è creato con R (vedi *rmarkdown*)
-    -   Le analisi possono diventare interattive con *Shiny* (esempi
-        progetti InforSAT, VARCITIES...)
-    -   ....
-
-## R: panoramica
-
--   Installazione di R, versioni
--   struttura di R - percorso di installazione
-
+- Installation of R, versions
+- R structure – installation path
 ![](images/clipboard-431216307.png)
+
 
 ## RStudio
 
--   versione desktop/server
--   vantaggi interfaccia:
-    -   console/terminale/background
-    -   progetti/packages/help
-    -   Environment/History/Connection/Tutorial
--   Salvare un progetto, cartella di progetto, GIT e GitHub
--   Working Directory predefinita, uso del tab per richiamare percorsi
+- desktop/server version
+- interface advantages:
+    - console/terminal/background
+    - projects/packages/help
+    - Environment/History/Connection/Tutorial
+- Saving a project, project folder, GIT and GitHub
+- Default Working Directory, use of the tab key to recall paths
 
 ![](images/clipboard-3935879104.png){width="6in"}
 
-## Righe codice - i comandi
+## Code lines – commands
 
-R è un programma basato su righe di codice con comandi che eseguono
-elaborazioni su dati.
+R is a program based on lines of code with commands that perform
+operations on data.
 
-L'utente immette i comandi al prompt ( \> ) e ciascun comando viene
-eseguito uno alla volta andando a capo.
+The user enters commands at the prompt ( \> ) and each command is
+executed one at a time by pressing return.
 
-Le righe di comando solitamente vengono salvate in un file "script" con
-estensione "R" (.R) e vengono eseguite una alla volta mediante "invio" o
-con selezione multipla e "invio".
+Command lines are usually saved in a "script" file with
+extension "R" (.R) and are executed one at a time using "enter" or
+with multiple selection and "enter".
 
-Con RStudio è possibile eseguire l'intero file, fermandosi eventualmente
-in punti specifici "breakpoints" (lo vedremo durante il corso).
+With RStudio it is possible to run the entire file, optionally
+stopping at specific points called "breakpoints" (we will see this during the course).
 
-> Esercizio: esegui comando della figura alla [slide precedente](#).
-
+> Exercise: run the command shown in the figure in the [previous slide](#).
 ```{r echo=TRUE}
 saluto <- "ciao"
 print(saluto)
 ```
 
-## Commenti e sezioni
+## Comments and sections
 
-Se non si vuole eseguire delle righe, basta mettere un carattere
-asterisco (`#`) all'inizio del testo che NON si vuole eseguire.
+If you do not want to execute some lines, simply place a hash
+character (`#`) at the beginning of the text that you do NOT want to execute.
 
-NB se inserito all'inizio della riga, e seguito da testo e da 4 o più
-caratteri `-` o `#`, il testo diventa una sezione
+NB: if inserted at the beginning of the line, followed by text and by 4 or more
+characters `-` or `#`, the text becomes a section.
 
 ![](images/clipboard-2771987315.png){width="5in"}
 
 ### 
 
-## Documentazione/help {#sec-documentazione-esempi-snippets-per-imparare}
+## Documentation/help {#sec-documentazione-esempi-snippets-per-imparare}
 
-Ogni singola funzione ha ampia documentazione con molti esempi.
-Chiamando una funzione dopo uno o due punti interrogativi richiama la
-documentazione. Quasi sempre gli esempi sono eseguibili facendo
-copia/incolla
+Each function has extensive documentation with many examples.
+Calling a function with one or two question marks opens the
+documentation. In most cases the examples can be executed by
+copying and pasting them.
 
-> Esercizio: esegui il primo esempio dalla documentazione della funzione
+> Exercise: run the first example from the documentation of the function
 > *print*
 
 ```{r eval=FALSE, echo=TRUE  }
@@ -140,79 +118,76 @@ copia/incolla
 ??print
 
 ```
+## Packages/Libraries
 
-## Packages/Librerie
-
-Tantissime funzionalità aggiuntive sono disponibili su componenti
-aggiuntivi che vanno installate con il comando
-`install.packages(<nome libreria>)` e poi caricate con il comando
-`library(<nome libreria>)`. Da RStudio possiamo caricarle da interfaccia
-grafica.
+Many additional features are available through add-on components
+that must be installed with the command
+`install.packages(<library name>)` and then loaded with the command
+`library(<library name>)`. In RStudio they can also be loaded through
+the graphical interface.
 
 ![](images/clipboard-348530046.png)
 
-## Packages/Librerie
+## Packages/Libraries
 
-Non tutti sono nella "repository" CRAN, alcuni sono su GitHub o
-scaricabili da altre fonti - vedi alcune cose sotto
+Not all packages are in the CRAN repository; some are on GitHub or
+can be downloaded from other sources – see some examples below
 
 -   <https://github.com/fpirotti/rPET>
 
 -   <https://github.com/fpirotti/CloudGeometry>
 
-Per installare librarie presenti solo in CRAN si utilizza una libreria
-chiamata "devtools"
+To install libraries available only outside CRAN you can use a library
+called "devtools"
 
 ```{r eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("fpirotti/CloudGeometry")
 ```
+## Variables and functions
 
-## Variabili e funzioni
+Here we see a variable and a function.
 
-Qui vediamo una variabile ed una funzione.
+**NB1** – the variable "saluto" is in the *global* Environment
+("scope/environment/context"). The function "print" is in the scope
+of the "base" package – hold down the CTRL key and click the function
+name to see what happens.
 
-**NB1** - la variabile "saluto" è nel Environment
-("ambito/ambiente/campo") *globale\**. La funzione "print" è nel campo
-del package "base" - tieni premuto il tasto CTRL e seleziona il nome
-della funzione - vedi cosa succede.
-
-**NB2** - operatore di assegnazione `<-` (o `<<-` nel caso si voglia
-forzare l'assegnazione ad una variabile *globale\**)
+**NB2** – assignment operator `<-` (or `<<-` if you want
+to force assignment to a *global* variable)
 
 ![](images/clipboard-3935879104.png)
 
-## Variabili e funzioni: Scope
+## Variables and functions: Scope
 
-\*Le variabili create al di fuori di funzioni sono note come variabili
-***globali*****;** possono essere utilizzate sia all'interno delle
-funzioni che all'esterno.
+\*Variables created outside functions are known as
+***global variables***; they can be used both inside
+functions and outside them.
 
-Sotto andiamo a creare una nostra funzione "salutami" che esegue il
-saluto. Provate a modificare l'operatore di assegnazione da `<<-` a
-`<<-` e rieseguire!!
+Below we create our own function "salutami" that performs the
+greeting. Try modifying the assignment operator from `<-` to
+`<<-` and run it again!!
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 
-salutami <- function(){
-  saluto <- "ciao ARPA!!!"
-  print(saluto)
+greet <- function(){
+  greeting <- "hello!!!"
+  print(greeting)
 }
 
-print(saluto)
-salutami()
-print(saluto)
+print(greeting)
+greet()
+print(greeting)
 
 
 ```
+## Data structures in R
 
-## Strutture dati in R
-
-NB ogni elemento in R è considerato (ed è) un VETTORE. Le funzioni di R
-considerano ogni variabile un vettore. Cosa significa? Che le funzioni
-elaborano tutti gli elementi di un vettore "by default" e che ogni
-elemento è indicabile con un numero iniziando da 1 (non da 0 come
-solitamente succede in altri linguaggi).
+NB: every element in R is considered (and actually is) a VECTOR. R
+functions treat every variable as a vector. What does this mean? It
+means that functions process all elements of a vector "by default" and
+that each element can be indexed with a number starting from 1 (not
+from 0 as is usually the case in many other programming languages).
 
 -   vector
 -   character
@@ -228,9 +203,9 @@ miaVar[[2]]
 
 ```
 
-## Tipo dati: vettori
+## Data type: vectors
 
-Perchè succede quello che vedete sotto (dati *numeric* diventano
+Why does what you see below happen (*numeric* data become
 *character*)?
 
 ```{r  }
@@ -246,14 +221,13 @@ print(miaVar)
 
 ```
 
-## Tipo dati: matrix
+## Data Type: matrix
 
-Matrix è un oggetto con struttura di matrice ovvero bidimensionale
-(righe × colonne); pensate a un gruppo di vettori impilati o affiancati.
+A **matrix** is an object with a matrix structure, meaning it is two-dimensional (**rows × columns**); think of it as a group of vectors stacked on top of or alongside each other.
 
-Si accede e si assegnano i valori con [r,c] dove r e ci sono gli indici
-di riga e colonna. Si può lasciare vuoto un indice per accedere alla
-riga/colonna
+
+
+Values are accessed and assigned using `[r, c]`, where `r` and `c` are the **row and column indices**. You can leave an index blank to access the entire row or column.
 
 ```{r}
 mat <- matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2)
@@ -264,28 +238,27 @@ mat[1,2] <- 100
 
 
 ```
+## Data Type: array
 
-## Tipo dati: array
+An **array** is a multidimensional matrix.
 
-Un array è una matrice multidimensionale.
+r=rows, c=columns, m=matrix.... etc...
 
-r=rows, c=columns, m=matrice.... etc...
-
-> Esercizio: vedi sotto come creare un array a 3 dimensioni. Nota che
-> duplica 9 valori 2 volte. Prova a dare 8 valori invece che nove. Prova
-> a dare 3 valori. Cosa succede.
+> Exercise: see below how to create a 3-dimensional array. Note that
+> it duplicates 9 values 2 times. Try providing 8 values instead of nine. Try
+> providing 3 values. What happens?
 
 ```{r}
  
-# 2 vettori di valori 
-valori1 <- c(5, 9, 3) 
-valori2 <- c(10, 11, 12, 13, 14, 15) 
+# 2 vectors 
+values1 <- c(5, 9, 3) 
+values2 <- c(10, 11, 12, 13, 14, 15) 
 column.names <- c("C1", "C2", "C3") 
 row.names <- c("R1", "R2", "R3") 
 matrix.names <- c("Matrix1", "Matrix2") 
   
-# Crea un array a tre dimensioni 
-arr <- array(c(valori1, valori2), dim = c(3, 3, 2), 
+# 3d array  
+arr <- array(c(values1, values2), dim = c(3, 3, 2), 
                   dimnames = list(row.names, 
                                   column.names, 
                                   matrix.names)) 
@@ -301,84 +274,82 @@ base (numeric, integer, character, logical...). Ma la struttura LIST no!
 La struttura *list* è un set di dati eterogenei; opzionalmente, è
 possibile assegnare dei nomi a ciascun elemento nel set.
 
-```{r  }
 
-lista <- list(1,4,6,8)
-class(lista)
-lista[[1]]
-lista[[2]]
-
-lista[[2]] <- "evviva"
-class(lista)
-lista[[1]]
-lista[[2]]
-print(lista)
-
-```
-
-## Tipo dati: List c/nomi
-
-NB, la struttura LIST non è altro che un set, una "lista", di oggetti
-associata ad un indice. L'indice è un numero intero ma può essere un
-testo (simile al concetto di coppie "key-\>value"/chiave-\>valore).
-
-Può essere assegnato un indice/chiave per riferimento all'elemento nella
-lista
+---
+title: "Data Types in R: Lists and Data Frames"
+output: html_document
+---
 
 ```{r}
+# Example of list creation and manipulation
+my_list <- list(1, 4, 6, 8)
+class(my_list)
+my_list[[1]]
+my_list[[2]]
 
-names(lista)
-names(lista) <- c("primo", "secondo")
-lista[[1]]
-lista[["primo"]]
-
+# Lists can hold heterogeneous data types
+my_list[[2]] <- "hurray"
+class(my_list)
+my_list[[1]]
+my_list[[2]]
+print(my_list)
 ```
 
-Svantaggi di strutture tipo *list*: usa più memoria!
+## Data Type: Named Lists
 
-> **Nota su allocazione memoria**: se dovete gestire volumi importanti
-> di dati, considerate la pre-allocazione della memoria SE conoscete la
-> dimensione. Vedi anche blog
-> [qui](https://blog.sellorm.com/2019/12/16/vector-pre-allocation-in-r-a-simple-example/).
+Note: A **LIST** structure is essentially a set or "list" of objects associated with an index. While the index is typically an integer, it can also be a text string (similar to the concept of "key-value" pairs).
+
+A key/index can be assigned to reference elements within the list:
 
 ```{r}
+# Assigning names to list elements
+names(my_list)
+names(my_list) <- c("first", "second")
 
-vettoreMoltoGrande = numeric(1000)
-vettoreMoltoGrande[[100]]
-
+# Accessing by index vs accessing by name
+my_list[[1]]
+my_list[["first"]]
 ```
 
-## Tipo dati: Data frame
+**Disadvantages of list structures:** They use more memory!
 
-Un *data frame* è una struttura di tipo *list* ma con un numero uguale
-di “righe” per ogni colonna di attributi. È possibile manipolare i data
-frame filtrando sulle righe e operando sulle colonne.
-
-Sia righe che colonne possono avere identificativi.
+> **Note on memory allocation:** If you need to handle large volumes of data, consider **pre-allocating** memory IF you know the final size. See the blog post [here](https://blog.sellorm.com/2019/12/16/vector-pre-allocation-in-r-a-simple-example/) for more details.
 
 ```{r}
- c.lat <- c(45.1, 45.2, 45.3)
- c.lon <- c(11.1, 11.2, 11.3)
- 
- df.geo.stz <- data.frame(stz=c("A", "B","C"),
-                          longitudine=c.lon,
-                          latitudine=c.lat)
- 
- colnames(df.geo.stz)
- rownames(df.geo.stz)
- rownames(df.geo.stz) <- df.geo.stz$stz
- rownames(df.geo.stz)
- 
+# Pre-allocating a large numeric vector
+veryLargeVector = numeric(1000)
+veryLargeVector[[100]]
 ```
 
-## Tipo dati: Data frame
+## Data Type: Data Frame
 
-Le colonne sono *vettori* - si può richiamare e assegnare i valori di
-una colonna con `$` o `[[]]` o `[,"<nomecolonna>"]` o
-`[ riga,"<nomecolonna>"]`
+A **data frame** is a list-type structure where every "column" (attribute) must have an equal number of "rows." Data frames allow for manipulation by filtering rows and operating on columns.
 
-Come con [Tipo dati: matrix] si possono usare gli indici di
-riga/colonna.
+Both rows and columns can have unique identifiers.
+
+```{r}
+# Creating a data frame from vectors
+c.lat <- c(45.1, 45.2, 45.3)
+c.lon <- c(11.1, 11.2, 11.3)
+
+df.geo.stz <- data.frame(stz = c("A", "B", "C"),
+                         longitude = c.lon,
+                         latitude = c.lat)
+
+# Checking and modifying names
+colnames(df.geo.stz)
+rownames(df.geo.stz)
+
+# Assigning station names as row names
+rownames(df.geo.stz) <- df.geo.stz$stz
+rownames(df.geo.stz)
+```  
+
+## Data Type: Data frame
+
+Columns are **vectors** — you can call and assign values to a column using `$`, `[[]]`, `[,"<columnname>"]`, or `[row, "<columnname>"]`.
+
+As with [Data Type: matrix], you can use **row/column indices**.
 
 ```{r eval= FALSE }
 df.geo.stz$stz
@@ -388,30 +359,25 @@ df.geo.stz$stz <- c("A1","B1", "C1")
 
 ```
 
-## Tipo dati: Tibble
 
-Un data frame particolare, lo vedremo quando usiamo l'infrastruttura di
-librerie "tidyverse". Vantaggi:
+## Data Type: Tibble
 
--   Non modifica il nome mettendo un punto al posto degli spazi (Vedi
-    esempio)
+A specific type of data frame, which we will encounter when using the "tidyverse" library infrastructure. Advantages:
 
--   Non utilizza mai `row.names()`. Lo scopo di *tidyverse* è quello di
-    memorizzare le variabili in modo coerente. Quindi non memorizza mai
-    una variabile come attributo speciale (i.e. nomi riga).
+- It does not modify names by replacing spaces with dots (See example).
+
+- It never uses `row.names()`. The goal of the *tidyverse* is to store variables consistently. Therefore, it never stores a variable as a special attribute (i.e., row names).
 
 ```{r message="FALSE", warning="FALSE"}
 library(tidyverse)
 geo.stz.tb <- tibble(df.geo.stz)
 class(geo.stz.tb)
 #geo.stz.tb
-names(data.frame(`nome colonna con spazi` = 1)) 
-names(tibble(`nome colonna con spazi` = 1))
+names(data.frame(`my column name with space` = 1)) 
+names(tibble(`my column name with space` = 1))
 ```
 
--   Ricicla solo vettori di lunghezza 1. Questo perché il riciclo di
-    vettori di lunghezza superiore è una fonte frequente di problemi
-    nascosti. Riciclo: prova i seguenti comandi:
+-   Only recycles vectors of length 1. This is because recycling vectors of greater length is a frequent source of hidden problems. Recycling: try the following commands:
 
 ```{r}
 v <- 1:10
@@ -420,19 +386,18 @@ v[] <- 1
 v[]
 v[] <- 1:5
 v[]
-# sotto non funziona!
+# not working below!
 #v[] <- 1:3
 
 ```
 
-## Convertire oggetti
+## Converting Objects
 
-Oggetti tra loro compatibili si possono convertire; ad esempio tra
-matrix =\> data.frame usando il comando
-`as.data.frame(<oggetto matrix>)` viceversa attenzione che tutti i tipi
-di vettore vengono resi omogenei.
+Compatible objects can be converted; for example, from matrix => data.frame using the command
+`as.data.frame(<matrix object>)` conversely, be careful that all vector
+types are made homogeneous.
 
-Provate il seguente esercizio sotto.
+Try the following exercise below.
 
 ```{r message=FALSE, warning=FALSE}
 mat
@@ -443,33 +408,28 @@ as.matrix(df.mat)
 df.mat
 ```
 
-## Salvare oggetti R
+## Saving R Objects
 
-Rstudio può salvare l'intero progetto con le variabili e le funzioni che
-vedete in alto a destra.
+RStudio can save the entire project, including the variables and functions you see in the top right.
 
-Il comando `save` salva in un file con estensione "rda" che viene
-riconosciuto anche direttamente da RStudio. NB è possibile salvare
-qualiasi oggetto, anche funzioni!
+The `save` command saves to a file with the "rda" extension, which is also directly recognized by RStudio. Note: it is possible to save any object, even functions!
 
-Prova a cliccare sul file dopo aver lanciato la prima riga del comando
-seguente!
+Try clicking on the file after running the first line of the command below!
 
-```{r}
-## NB salvo anche la funzione "salutami" fatta all'inizio!
-save(df.geo.stz, salutami, file="oggetti.rda")
+```{r} 
+newobj <- "una stringa"
+save(df.geo.stz, newobj, file="oggetti.rda")
 load("oggetti.rda")
 saveRDS(df.geo.stz, file = "geo.stz.RDS") 
-df.geo.stz <- readRDS("geo.stz.RDS")
+df.geo.stz <- readRDS("geo.stz.RDS") 
 ```
+ ## R Operators {#sec-gli-operatori-di-r}
 
-## Operatori di R {#sec-gli-operatori-di-r}
+R's arithmetic and logical operators work on both individual scalars
+and on vectors and structures like *array* and *matrix*.
 
-Gli operatori aritmetici e logici di R funzionano sia su singoli scalari
-che su vettori e strutture come *array* e *matrix*.
-
-NB questo vuol dire che si possono eseguire operazioni su tutti i
-singoli valori della struttura internamente (*vectorization*)!
+Note: this means that operations can be performed on all the
+individual values within the structure internally (*vectorization*)!
 
 ```{r results='hide'}
 c.lat + 10
@@ -484,93 +444,67 @@ df.mat$V3 <- df.mat$V2**2
 #c.lat == c.lon && c.lat==c.lat
 #c.lat == c.lon || c.lat==c.lat 
 ```
+ # Data in/process/out {.Section1 .titlepage}
 
-## Esercizio 1
+## What we will do
 
--   Creare una funzione chiamata *crea.df* che esegue la seguente
-    operazione:
-    -   creazione di un oggetto data.frame con 2 colonne, (Stazione,
-        ValoreX) e 4 righe. Inventate voi i valori. Calcolo una terza
-        colonna con il quadrato di ValoreX.
--   Eseguire la funzione per creare un oggetto di tipo "tibble" chiamato
-    *tabella.tb*
--   **Consegnate** un file RDA contenente i due oggetti, la funzione
-    *crea.df* e il tibble *tabella.tb -* chiamate il file con:
-    es1_cognome_nome.rda, e.g. *es1_pirotti_francesco.rda*
+We will learn to read, transform, and write data from different sources:
 
-# Data in/process/out {.Section1 .titlepage}
+* Structured text files (**CSV**)
+* Spreadsheets (**XLSX**)
+* Unstructured online data such as **JSON**
 
-## Cosa faremo
+## Data Input: CSV
 
-Impareremo a leggere/trasformare/scrivere dati da fonti diverse:
+CSV files are structured text files formatted as tables and are widely used for data sharing. The standard command is `read.csv`. 
 
--   file di testo strutturati (**CSV**)
+**Note:** it is not optimized for efficiency. For massive datasets, use the `fread` command from the `data.table` library.
 
--   fogli di lavoro (**XLSX**)
-
--   dati online non strutturati come **JSON**
-
-## Input dati: CSV
-
-I file CSV sono notoriamente file di testo strutturati come tabelle e
-molto utilizzati per condividere dati.
-
-Il comando standard è `read.csv` .
-
-NB non è ottimizzato per l'efficienza. Per dati massivi usare il comando
-`fread` dalla libreria data.table `data.table::fread()`.
-
-Facciamo un esercizio con dati ARPA! Scarichiamo dalla pagina
-[QUI](https://www.arpa.veneto.it/arpavinforma/indicatori-ambientali/indicatori_ambientali/clima-e-rischi-naturali/immagini-e-file-allegati/2021/prec_mensili_2020.csv)
-o direttamente da
-[QUI](https://www.arpa.veneto.it/arpavinforma/indicatori-ambientali/indicatori_ambientali/clima-e-rischi-naturali/immagini-e-file-allegati/2021/prec_mensili_2020.csv/@@download/file)
-i dati di precipitazione mensile - salvateli in una sottocartella "dati"
-e caricateli usando sia la funzione read.csv che fread dalla libreria
-data.table (se l'avete altrimenti vedete a schermo i risultati). Si
-vuole notare le differenze e come si chiama una funzione SENZA caricare
-una libreria, usando `::`.
-
-```{r eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE}
-
-prec <- read.csv("dati/Prec_mensili_2020.csv")
-prec2 <- data.table::fread("dati/Prec_mensili_2020.csv")
+```{r csv_input,  echo=TRUE}
+# Load data using standard and data.table methods
+# Note: This assumes you have a 'data' folder
+prec <- read.csv("data/Prec_mensili_2020.csv")
+prec2 <- data.table::fread("data/Prec_mensili_2020.csv")
 summary(prec2)
 ```
 
-> Esercizio: Importate i dati inserendo i parametri corretti di
-> read.csv - come noterete, la prima riga NON importa correttamente. La
-> seconda si, ma è una funzione della libreria data.table. Usate la
-> documentazione in R per capire come aggiungere argomenti alla funzione
-> read.csv (vedi [sezione
-> QUI](#sec-documentazione-esempi-snippets-per-imparare)). **NB** usate
-> il tasto TAB per richiamare i percorsi, risparmiate tempo e fatica!
+## Data Input: Excel Sheets
 
-## Input dati: Fogli excel
+Spreadsheets in MS Excel format are more structured than CSV files. To read/write this data, additional libraries are required.
 
-I fogli di calcolo in formato MS Excel sono più strutturati rispetto ad
-un file CSV, dato che ogni colonna ha anche lo specifico tipo di dati
-(numero, testo, data ecc...).
-
-Per leggere/scrivere questi dati è necessario usare librerie aggiuntive.
-
-```{r }
+```{r excel_input, eval=FALSE}
 prec3 <- prec2
-## nuova colonna 
+## Create a new calculated column 
 prec3$norm2020 <- prec3$`2020 (mm)` / prec3$`media 1993-2019 (mm)`
-writexl::write_xlsx( list("originale" =prec2, "elaborata"=prec3), path="dati/output.xlsx" )
-prec4 <- readxl::read_xlsx("dati/output.xlsx")
 
+# Write to Excel with multiple sheets
+writexl::write_xlsx(list("original" = prec2, "processed" = prec3), path = "data/output.xlsx")
 
+# Read back from Excel
+prec4 <- readxl::read_xlsx("data/output.xlsx")
 ```
 
-![](images/clipboard-2827995654.png)
 
-## Grafici di base
+
+![](images/clipboard-2827995654.png)
+## Data Input: JSON
+
+JSON (**J**ava**S**cript **O**bject **N**otation) is used for transferring unstructured data. We will use data directly from the ARPAV API.
+
+```{r json_input, eval=FALSE}
+## Download directly from ARPAV API
+api.url <- "[https://api.arpa.veneto.it/REST/v1/meteo_meteogrammi?rete=MGRAMMI&coordcd=18&orario=0&rnd=0.9966091913301682](https://api.arpa.veneto.it/REST/v1/meteo_meteogrammi?rete=MGRAMMI&coordcd=18&orario=0&rnd=0.9966091913301682)"
+stazioni.meteo <- jsonlite::read_json(api.url)
+```
+
+
+## Basic plotting
 
 La funzione `plot` riesce a creare grafici di base. Andiamo a
 confrontare le precipitazioni del 2020 con quelle medie 1993-2019.
 
-```{r fig.height=6, fig.width=6}
+```{r, eval=FALSE, fig.height=6, fig.width=6 }
+prec3 <- prec2
 plot(prec3$`2020 (mm)`[1:12], prec3$`media 1993-2019 (mm)`[1:12], xlab="Prec. 2020 (mm)")
 abline(1,1)
 ```
@@ -580,55 +514,32 @@ abline(1,1)
 Miglioriamo un po' il grafico - ma utilizzeremo poi la libreria ggplot2
 per ottenere grafici migliori.
 
-```{r fig.height=6, fig.width=6}
+```{r, eval=FALSE, fig.height=6, fig.width=6}
 plot(prec3$`2020 (mm)`[1:12], prec3$`media 1993-2019 (mm)`[1:12], 
      xlab="Prec. 2020 (mm)", ylab="Prec.media  (mm)",
      xlim=c(0,300), ylim=c(0,300))
 abline(1,1)
 ```
+ 
+# Data Transformation {.Section1 .titlepage}
 
-## Input dati: JSON
+## Introduction
 
-I dati JSON (**J**ava**S**cript **O**bject **N**otation) sono molto
-utilizzati per trasferire dati non strutturati. Vedi
-[QUI](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
-e
-[QUI](https://www.freecodecamp.org/news/what-is-json-a-json-file-example/).
-Anche per dati "geo" con il GeoJSON (vedi esempio
-[QUI](https://it.wikipedia.org/wiki/GeoJSON)).
-
-Usiamo direttamente da API ARPAV "Anagrafica stazioni in formato JSON"
-dalla [pagina
-QUI](https://www.arpa.veneto.it/dati-ambientali/dati-in-diretta/meteo-idro-nivo/variabili_meteo)
-
-```{r}
-## Scarichiamo direttamente da API ARPAV
-api.url <- "https://api.arpa.veneto.it/REST/v1/meteo_meteogrammi?rete=MGRAMMI&coordcd=18&orario=0&rnd=0.9966091913301682"
-stazioni.meteo <- jsonlite::read_json(api.url)
-```
-
-# Trasformazione dei dati {.Section1 .titlepage}
-
-## Introduzione
-
-Modificare dati significa aggiungere, togliere, filtrare, manipolare
+Modifying data means adding, removing, filtering, and manipulating
 colonne, creare sommari e statistiche di interesse aggregando dati.
-Insomma il dato viene "manipolato". In inglese viene anche usato "data
-wrangling"
+In short, the data is being "manipulated." In English, the term
+"data wrangling" is also used.
 
-Ci "alleniamo" con i dati JSON delle stazioni meteo ARPAV scaricati dal
-JSON.
+We will "train" using the ARPAV weather station JSON data downloaded 
+from the JSON.
 
-::: obiettivo
-**Obiettivo**: creare un grafico con la posizione delle stazioni e
-aggiungere qualche valore mediante unione con altri dati.
+::: Objective
+**Objective**: create a graph with the position of the stations and
+add values by joining with other data.
 :::
+## Iterators
 
-## Iteratori
-
-Fondamentale saper utilizzare operazioni che eseguono su tutti gli
-elementi di un oggetto. E.g. tutte le colonne di un *data.frame*, tutte
-le righe di un *data.frame*, tutti gli oggetti di una *list*...
+It is fundamental to know how to perform operations on all elements of an object (e.g., all columns of a *data.frame*, all rows of a *data.frame*, all objects in a *list*).
 
 ```{r results='hide'}
 dati <- stazioni.meteo$data
@@ -638,146 +549,157 @@ length(dati)
 ## ma non necessariamente vero
 for(i in 1:length(dati)){
   print(dati[[i]])
-  break # esce dal ciclo
-  next #  continua il ciclo senza elaborare le righe successive
-  print("Questa riga non viene elaborata")
+  break # exits the loop
+  next #  go to next cycle of iteration
+  print("This line will not be evaluated due to 'next'")
 }
 
 funz <- function(x){
   length(x)
 }
-# lapply/mapply/sapply/apply per righe/colonne
-# togliete il commento alla riga sotto 
+# lapply/mapply/sapply/apply for rows/columns 
+# remove the comment from below to run '''lapply'''
 # lapply(dati, funz)  
 
 
 ```
-
 # Tidyverse {.Section1 .titlepage}
 
-## Introduzione
+## Introduction
 
-Tidyverse, dal [sito](https://www.tidyverse.org/): "un set di funzioni e
-librerie di R per la *data science*. Tutti i pacchetti condividono una
-filosofia di progettazione, una grammatica e strutture di dati".
+From the [Tidyverse website](https://www.tidyverse.org/): "The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures."
 
-La grammatica per la manipolazione dei dati fornisce un insieme coerente
-di funzioni (verbi) dalla libreria
-[*dplyr*](https://dplyr.tidyverse.org/):
+The grammar for data manipulation provides a coherent set of functions (verbs) from the [*dplyr*](https://dplyr.tidyverse.org/) library:
 
--   **`mutate()`** aggiunge nuove variabili che sono funzioni di
-    variabili esistenti
+-   **`mutate()`** adds new variables that are functions of existing variables.
+-   **`select()`** picks variables based on their names.
+-   **`filter()`** picks cases based on their values.
+-   **`summarise()`** reduces multiple values to a single summary.
+-   **`arrange()`** changes the ordering of the rows.
 
--   **`select()`** seleziona le variabili in base al loro nome.
+By combining these with **`group_by()`**, operations are stratified "by group" for aggregated analysis. There are many other operators, but these are the core verbs.
 
--   **`filter()`** seleziona i casi in base ai loro valori.
 
--   **`summarise()`** riduce più valori a un singolo riassunto.
 
--   **`arrange()`** cambia l'ordine delle righe.
+## Iterators: map
 
-Combinando con **`group_by()`** questa operazione viene stratificata
-"per gruppo" aggregando le operazioni. Ci sono molti altri operatori ma
-questi sono quelli di base.
+The "map" operator is similar to the "apply" family but with more functionality. By using **map_df**, the results are automatically collected into a table (tibble)!
 
-## Iteratori: map
-
-L'operatore "map" è simile agli "apply" ma con più funzionalità. Usando
-*map_df* i risultati vengono raccolti su una tabella (tibble)!
-
-```{r   message=FALSE, warning=FALSE,  results='hide'}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
-## i dati sono strutturati nell'oggetto "data" 
-##  come liste dentro altre liste
- 
-dt <- map(.x = stazioni.meteo$data, .f = function(x){ x } ) 
-dtf <- map_df (.x = stazioni.meteo$data, .f = function(x){ x } ) 
 
+# Let's assume weather_stations$data is a list of lists from a JSON source
+# map_df creates a data frame by row-binding the elements of the list
+
+# Example of usage (conceptual based on previous context):
+# dtf <- map_df(.x = weather_stations$data, .f = function(x){ 
+#   # Transformation logic here 
+#   return(as.data.frame(x))
+# })
 ```
+    
+    ## Iterators: map
 
-## Iteratori: map
+NOTE that `map` collects each element of the list into a vector, and a vector can only contain values of a single base type (*character, numeric, integer, logical...*). It will always choose *character* if it encounters mixed types.
 
-Mappando a data.frame con `map` abbiamo colonne di tipo character che
-dovrebbero essere numeric dobbiamo in alcuni casi assegnare il tipo alla
-colonna come sotto.
+**Note:** with `map_df` this does not happen because the `map_df` function is "smart" and understands which type to use for each column. EXCEPT for the "value" column. Why?**
 
-NB gli iteratori su tabelle (data.frame o tibble) lavorano per colonne
-(column-wise).
-
-```{r results='hide'}
-
-## richiamo la classe di ogni colonna
-# map(.x = dt, .f = function(x){ class(x) } ) 
-map(.x = dtf, .f = function(x){ class(x) } ) 
-## ATTENZIONE - colonna valore è corretta?
-dtf$valore <- as.numeric(dtf$valore)
-dtf$tipo <- as.factor(dtf$tipo)
-levels(dtf$tipo)
-```
-
-## Iteratori: map
-
-NOTA che *map* raccoglie ogni elemento della lista in un vettore ed il
-vettore può avere solo valori di un tipo base (*character, numeric,
-integer, logical...*) - sceglie sempre il *character* se trova diverse
-tipologie.
-
-NB con `map_df` questo non succede perchè la funzione `map_df` è "smart"
-e capisce qualche tipo usare per ogni colonna. TRANNE che per la colonna
-valore. Perché?\*\*
-
-\*\* Nota che nel JSON il numero in "valore" è tra virgolette, dunque
-viene visto come testo (character) e non come numerico. Confronta con
-latitudine e longitudine!
+** Note that in the JSON, the number in "value" is inside quotes, therefore it is treated as text (character) and not as numeric. Compare this with latitude and longitude!
 
 ```{r}
-str(stazioni.meteo$data[[1]])
+# Example of the difference in data typing
+# Latitude/Longitude in JSON: 11.12 (numeric)
+# Value in JSON: "15.5" (character)
+
+# To fix this after map_df:
+# dtf$valore <- as.numeric(dtf$valore)
 ```
 
-## Filter e select
+ ## Filter and Select
 
-Operazioni usando tidyverse (e altri sistemi) usano operatori di
-concatenzione di processi. In questo caso si usa `%>%` ovvero un
-operatore che indica di usare l'output di un processo come input al
-processo successivo. Un esempio con un'operazione di filtro con
-successiva selezione di colonne:
+Operations using **tidyverse** (and other systems) use process concatenation operators. In this case, the pipe operator `%>%` is used, which indicates that the output of one process should be used as the input for the next process.
+
+Here is an example of a filter operation followed by column selection:
+
+
 
 ```{r eval=FALSE}
-## Selezioniamo solo le stazioni in provincia di Belluno
-dtf.belluno <- dtf %>% filter( provincia =="BELLUNO")
-## Se aggiungiamo criteri di filtro divisi da virgola è come usare AND 
-dtf %>% filter( provincia !="BELLUNO", valore < 10)
-dtf %>% filter( provincia !="BELLUNO" & valore < 10)
-## Se aggiungiamo criteri di filtro è come usare AND
-dtf %>% filter( provincia =="BELLUNO" | valore < 12) %>% select(nome_stazione, valore)
+## Select only the stations in the province of Belluno
+dtf.belluno <- dtf %>% filter(provincia == "BELLUNO")
+
+## Adding filter criteria separated by a comma is equivalent to using AND 
+dtf %>% filter(provincia != "BELLUNO", valore < 10)
+dtf %>% filter(provincia != "BELLUNO" & valore < 10)
+
+## Using the OR operator (|) and then selecting specific columns
+dtf %>% filter(provincia == "BELLUNO" | valore < 12) %>% 
+  select(nome_stazione, valore)
 ```
 
 ## Mutate
 
-Il comando mutate consente di calcolare nuove colonne in funzione di
-quelle esistenti.
+The `mutate` command allows you to calculate new columns based on existing ones.
+
+
 
 ```{r eval=FALSE}
-dtf %>% mutate(valore=valore^2)  %>% select(valore)
+## Create a new column (or overwrite) with the square of the value
+dtf %>% 
+  mutate(valore = valore^2) %>% 
+  select(valore)
 ```
 
-## Aggregazioni
+## Summary Table of Main Verbs
 
-Operazioni di aggregazione con `group_by` e `summarise`
+| Function | Description |
+| :--- | :--- |
+| `filter()` | Selects rows based on their values |
+| `select()` | Selects columns based on their names |
+| `mutate()` | Creates or transforms columns |
+| `%>%` | Pipes (passes) the result to the next function |
+| `%|%` | Pipes (passes) the result to the next function |
 
-Attenzione - la funzione `mean` restituisce `NA` se tra i valori trova
-degli `NA`, per evitare questo comportamento mettere "`na.rm = TRUE`".
+## Aggregations
+
+Aggregation operations using `group_by` and `summarise`.
+
+
+
+**Warning:** the `mean` function returns `NA` if it finds any `NA` values among the data. To prevent this behavior, use the argument `na.rm = TRUE`.
 
 ```{r}
-dtf %>% group_by(tipo)  %>% summarise(valore=mean(valore))
-dtf %>% group_by(tipo)  %>% summarise(valore=mean(valore, na.rm = TRUE))
+# This will return NA if any missing values are present
+dtf %>% 
+  group_by(tipo) %>% 
+  summarise(valore = mean(valore))
+
+# This correctly calculates the mean excluding NAs
+dtf %>% 
+  group_by(tipo) %>% 
+  summarise(valore = mean(valore, na.rm = TRUE))
 ```
 
-## Unione tabelle (join)
+## Joining tables (join)
 
-I join sono operazioni note in ambito di gestione dei dati, servono per
-aggiungere in senso orizzontale valori usando una o più colonne con
-valori corrispondenti.
+Joins are well-known operations in data management; they are used to horizontally combine values from different tables using one or more columns with matching values.
+
+
+
+```{r eval=FALSE}
+# Example of a Left Join
+# We keep all records from the first table and add columns from the second 
+# where there is a match in 'codice_stazione'
+dt_combined <- dtf %>% 
+  left_join(other_data, by = c("codice_stazione" = "station_id"))
+```
+
+### Main Join Types
+
+- **`left_join()`**: Keeps all observations in the left table.
+- **`right_join()`**: Keeps all observations in the right table.
+- **`inner_join()`**: Keeps only observations present in both tables.
+- **`full_join()`**: Keeps all observations present in either table.
+
 
 ![](images/clipboard-420454527.png)
 
@@ -852,13 +774,14 @@ tb.long2wide
 
 # Grafici {.Section1 .titlepage}
 
-## Grafici con GGplot - dispersione
+## Plots with ggplot2 - Scatter Plot
 
-Le funzioni di base "`plot`" sono utili ma ci sono librerie che
-forniscono più funzionalità. Introduciamo "ggplot". Notate che viene
-creato un grafico concatenando con l'operatore "`+`" gli oggetti del
-grafico. "`aes`" sta per *aestethics* e indica colori e valori degli
-assi, aggregazioni ecc...
+The basic "`plot`" functions are useful, but there are libraries that
+provide more functionality. Let's introduce "ggplot2". Note that a
+graph is created by concatenating plot objects using the "+"
+operator. "`aes`" stands for *aesthetics* and indicates colors and
+axis values, aggregations, etc.
+
 
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
 library(ggplot2)
@@ -866,29 +789,30 @@ ggplot(dtf, aes(x=quota, y=as.numeric(valore))) + geom_point( ) +
   geom_smooth(method = "lm")+ theme_bw()
 ```
 
-## Grafici con GGplot - scatola e baffi
+## Plots with GGplot - Box and Whisker
 
-NB. la parte "as.numeric" in quanto la colonna anche contiene numeri è
-di tipo "character". Modifichiamola con "as.numeric", ma vedrete due
-valori mancanti (NA=not available).
+Note: the "as.numeric" part is necessary because the column, even
+though it contains numbers, is of the "character" type. Let's modify
+it with "as.numeric", but you will see two missing values
+(NA=not available).
 
 ```{r warning=FALSE}
 dtf$valore <- as.numeric(dtf$valore)
 ggplot(dtf) + geom_boxplot(aes(x=tipo, y=valore )) + theme_bw()
 ```
 
-## Grafici multipli (facets)
+## Multiple Plots (facets)
 
-`facet_wrap` e `facet_grid` consentono di "esplodere" per una o più
-variabili di raggruppamento. Qui un esempio con una stima della funzione
-di distribuzione delle frequenze.
+`facet_wrap` and `facet_grid` allow you to "explode" a plot based on one
+or more grouping variables. Here is an example using an estimate of the
+frequency distribution function.
 
 ```{r   warning=FALSE}
 ggplot(dtf) + geom_density(aes(x=valore )) + theme_bw()
 ggplot(dtf) + geom_density(aes(x=valore)) + facet_wrap(vars(tipo)) + theme_bw() 
 ```
 
-## Grafici multipli (facets)
+## Plats with facets
 
 `facet_wrap` e `facet_grid` consentono di "esplodere" per una o più
 variabili di raggruppamento.
@@ -897,12 +821,12 @@ variabili di raggruppamento.
  ggplot(dtf) + geom_density(aes(x=valore)) + facet_grid(provincia~tipo ) + theme_bw()
 ```
 
-## Grafici e dati geo
+## Geo Data and Graphics
 
-Abbiamo colonne con coordinate: possiamo creare un grafico con uno
-sfondo territoriale e considerare delle colonne come coordinate? Per
-dati geo usiamo libreria *sf* e *terra*. Non indispensabili per
-geostatistica, ma fortemente consigliati.
+Do we have columns with coordinates? Can we create a graph with a
+territorial background and treat certain columns as coordinates? For
+geo data, we use the *sf* and *terra* libraries. They are not
+indispensable for geostatistics, but they are highly recommended.
 
 ```{r fig.height=5, fig.width=6, message=FALSE, warning=FALSE}
 library(ggspatial, quietly = T)
@@ -913,33 +837,35 @@ dtf.geo <- sf::st_as_sf(dtf,coords = c("longitudine","latitudine"), crs=4326 )
 ggplot(dtf.geo) + geom_sf(aes(color=valore, size=valore )) + coord_sf()
 ```
 
-## Grafici e stampe PNG
+## Graphs and PNG Exports
 
-Il metodo per avere grafici su stampa mediante immagini o pdf
+The method for exporting graphs as images or PDFs:
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
-png("fileGrafico.png")
+png("graphicsFile.png")
 
  p <- ggplot(dtf.geo) + geom_sf(aes(color=valore, size=valore )) + coord_sf()
  print(p)
 dev.off()
 ```
 
-possiamo impostare dimensioni in pixel (width e height) ed inoltre la
-risoluzione (res)... provate a vedere.
+We can set dimensions in pixels (width and height) and also the
+resolution (res)... try it out and see.
 
 ```{r  eval=FALSE, message=FALSE, warning=FALSE}
-png("fileGrafico300dpi.png", width=2000, height=2000, res=300)   
+png("file300dpi.png", width=2000, height=2000, res=300)   
   p <- ggplot(dtf.geo) + geom_sf(aes(color=valore, size=valore )) + coord_sf()  
   print(p) 
 dev.off()
 ```
 
-## Grafici e stampe PDF
+## Graphs and PDF Exports
 
-Il formato PDF ha il vantaggio/svantaggio di essere vettoriale (non
-perde definizione) - provate a vedere la definizione. Perchè non usiamo
-SEMPRE pdf? Immaginatevi a inserire milioni di punti... perde efficacia.
+The PDF format has the advantage/disadvantage of being vector-based (it
+does not lose definition) — try checking the resolution yourself. Why
+don't we use PDF ALL the time? Imagine inserting millions of points... it
+loses efficiency.
+
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
 pdf("fileGrafico.pdf")  
@@ -972,67 +898,4 @@ dev.off()
 [Sono PDF formato poster con indicazioni di base sull'utilizzo di
 strumenti R](https://github.com/rstudio/cheatsheets/)
 
-![](images/clipboard-1740990708.png)
-
-## Esercizio 3
-
-Vedi file "modulo1_03a_esercizio_finale2.R" e
-"modulo1_03b_esercizio_finale2.R" nella cartella "esercizi/modulo1" -
-eseguirete il seguente grafico estraendo i dati dalle API meteo ARPAV.
-
-![](images/clipboard-2574397239.png)
-
-# Dati geospaziali {.Section1 .titlepage}
-
-## Introduzione
-
-A grandi linee i dati spaziali sono interpretati digitalmente mediante
-due modelli: il modello vettoriale ed il modello raster. In entrambi i
-casi va comunque compreso che ogni elemento è georiferito, ovvero ha una
-localizzazione in un sistema di riferimento, quindi delle coordinate.
-
-## Dati vettoriali
-
-I dati vettoriali hanno tre primitive geometriche di base: punti linee e
-poligoni. La base è sempre il punto con una coordinate, in 2d o 3d.
-
-![By M. W. Toews - Own work, CC BY-SA
-4.0](images/clipboard-2368587503.png){width="298"}
-
-Ci sono decine di formati di file che rappresentano dati vettoriali. Ne
-abbiamo visto uno all'inizio, il file JSON! Per un riferimento vedete la
-[pagina QUI](https://gdal.org/drivers/vector/index.html). Ad oggi la
-libreria di riferimento per leggere questi dati è la [libreria
-sf](https://r-spatial.github.io/sf/).
-
-## Raster
-
-Il formato raster è molto semplice: sono nodi a passo costante, quindi
-una "griglia" georiferita mediante uno o più punti. Il passo della
-griglia è spesso identico nelle due direzioni (ma non necessariamente),
-e ne determina la risoluzione spaziale.
-
-Ci sono decine di formati di file che rappresentano dati raster. Per un
-riferimento vedete la [pagina
-QUI](https://gdal.org/drivers/raster/index.html). Ad oggi la libreria di
-riferimento per leggere questi dati è la [libreria
-terra](https://rspatial.github.io/terra/).
-
-::: caption
-![fonte: appunti GIS Prof. Alberto
-Guarnieri](images/clipboard-3919052629.png)
-:::
-
-## Interpolazione
-
-Stimare valori di una variabile applicando un modello creato conoscendo
-valori misurati (e.g. campionamenti). E' ragionevole adottare un
-criterio spaziale, ovvero usare un criterio di spazio (il valore del
-punto sarà probabilmente più simile ad una misura vicina che una misura
-più lontana, [**a parità di altre condizioni)**]{.underline}. Da qui la
-geostatistica.
-
-::: caption
-![fonte: appunti GIS Prof. Alberto
-Guarnieri](images/clipboard-658366646.png)
-:::
+![](images/clipboard-1740990708.png) 
