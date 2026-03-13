@@ -1,6 +1,9 @@
 library(rgee)
+## library sf for "features" e.g. vectors
 library(sf)
+## library terra for raster processing in R
 library(terra)
+## library ggplot2 for plotting
 library(ggplot2)
 
 rgee::ee_Initialize() 
@@ -49,7 +52,7 @@ ls9f <- ls9$
 stack <- ls9f$
   addBands(canopy_height)$
   rename(c("Temp", "CH"))$
-  mask(canopy_height$gt(2))$
+  mask(canopy_height$gt(5))$
   clip(padova_geom) 
 
 # -------------------------------------------------------
@@ -66,5 +69,32 @@ samples <- stack$sample(
 # Inspect
 # samplesClient <- samples$getInfo()
 
+## download sample points to r object
 samplesClient.sf <- ee_as_sf(samples)
-plot(samplesClient.sf)
+# plot(samplesClient.sf)
+## write sample points to geopackage format, for loading to QGIS
+sf::write_sf(samplesClient.sf, "samplesOutput.gpkg")
+# if you want to load a geopackage file:
+# sf::read_sf("samplesOutput.gpkg")
+
+## if you want to export the stack to a geotif image in drive
+task_img <- ee_image_to_drive(
+  description = "stack",
+  image = stack,
+  fileFormat = "GEO_TIFF",
+  region = padova$geometry(),
+  fileNamePrefix = "stack",
+  scale = 30
+) $start()
+ 
+## (ee_as_rast is a shortcut to downloading in drive and then 
+## in local space, but needs googledrive library and access 
+## credentials )
+## stack.rast <- ee_as_rast(stack)
+#  plot(stack.raster)
+
+ggplot(samplesClient.sf, aes(x=CH, y=Temp) ) + geom_point()
+
+linear.model <- lm(data = samplesClient.sf,   Temp ~ CH )
+plot(linear.model)
+summary(linear.model)
