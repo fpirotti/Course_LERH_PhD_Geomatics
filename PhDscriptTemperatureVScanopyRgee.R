@@ -1,4 +1,8 @@
 library(rgee)
+library(sf)
+library(terra)
+library(ggplot2)
+
 rgee::ee_Initialize() 
 
 # -------------------------------------------------------
@@ -46,8 +50,7 @@ stack <- ls9f$
   addBands(canopy_height)$
   rename(c("Temp", "CH"))$
   mask(canopy_height$gt(2))$
-  clip(padova_geom)$
-  unmask()
+  clip(padova_geom) 
 
 # -------------------------------------------------------
 # Sample pixels
@@ -56,9 +59,12 @@ stack <- ls9f$
 samples <- stack$sample(
   region = padova_geom,
   scale = 50,
-  numPixels = 1000,
+  numPixels = 2000,
   geometries = TRUE
 )
 
 # Inspect
-print(samples)
+# samplesClient <- samples$getInfo()
+
+samplesClient.sf <- ee_as_sf(samples)
+plot(samplesClient.sf)
